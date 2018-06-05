@@ -112,7 +112,8 @@ log_in() {
       echo '{"credsStore":"ecr-login"}' >> ~/.docker/config.json
     fi
   fi
-  if [ -n "${docker_config_echo}" ]; then
+
+  if [ "$docker_config_echo" = "true" ]; then
     cat ~/.docker/config.json
   fi
 }
