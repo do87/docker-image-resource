@@ -30,6 +30,9 @@ Note: docker registry must be [v2](https://docs.docker.com/registry/spec/api/).
 * `insecure_registries`: *Optional.* An array of CIDRs or `host:port` addresses
   to whitelist for insecure access (either `http` or unverified `https`).
   This option overrides any entries in `ca_certs` with the same address.
+  
+* `prevent_update`: *Optional.*  Default `false`. If true, the pushed image will
+not be pulled from the registry afterwards
 
 * `registry_mirror`: *Optional.* A URL pointing to a docker registry mirror service.
 
@@ -213,9 +216,6 @@ version is the image's digest.
 
 * `push_as`: *Optional.*  A list of comma-separated image_name:tag_name the image
   will also be pushed as
-
-* `prevent_update`: *Optional.*  Default `false`. If true, the pushed image will
-  not be pulled from the registry afterwards
 
 * `tag`: *Optional.* The value should be a path to a file containing the name
   of the tag.
