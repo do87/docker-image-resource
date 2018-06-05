@@ -211,6 +211,9 @@ version is the image's digest.
 * `pull_tag`: *Optional.*  **DEPRECATED. Use `get` and `load` instead.** Default
   `latest`. The tag of the repository to pull down via `pull_repository`.
 
+* `push_as`: *Optional.*  A list of comma-separated image_name:tag_name the image
+  will also be pushed as
+
 * `tag`: *Optional.* The value should be a path to a file containing the name
   of the tag.
 
@@ -288,7 +291,7 @@ resource_types:
   type: docker-image
   privileged: true
   source:
-    repository: example.com:5000/docker-image-resource
+    repository: do87/docker-image-resource
     tag: latest
 
 resources:

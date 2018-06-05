@@ -267,6 +267,15 @@ if [ -n "$additional_tag_names" ]    ; then
   done
 fi
 
+push_as=$(jq -r '.params.push_as // ""' < $payload)
+if [ -n "$push_as" ]    ; then
+  for repo_and_tag in $push_as; do
+    docker tag "${repository}:${tag_name}" "${repo_and_tag}"
+    docker push "${repo_and_tag}"
+    echo "${repository}:${tag_name} tagged as ${repo_and_tag}"
+  done
+fi
+
 jq -n "{
   version: {
     digest: $(echo $digest | jq -R .)
