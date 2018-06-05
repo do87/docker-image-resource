@@ -5,8 +5,11 @@ This image repository is forked from [concourse/docker-image-resource](https://g
 ## Major changes
 
 * Optional textual tag name in the task
+
 * Optional extra push of the built image to a different registry address (and tag), assuming same authentication
-* Optional prevention of 'pull' after out stage
+
+* Optional prevention of image pull after `out` (build) stage
+
 
 ## Source Configuration
 
