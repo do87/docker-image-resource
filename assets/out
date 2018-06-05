@@ -60,6 +60,7 @@ tag_params=$(jq -r '.params.tag // ""' < $payload)
 tag_prefix=$(jq -r '.params.tag_prefix // ""' < $payload)
 additional_tags=$(jq -r '.params.additional_tags // ""' < $payload)
 need_tag_as_latest=$(jq -r '.params.tag_as_latest // "false"' < $payload)
+tag_string=$(jq -r '.params.tag_string // ""' < $payload)
 build_args=$(jq -r '.params.build_args // {}' < $payload)
 build_args_file=$(jq -r '.params.build_args_file // ""' < $payload)
 
@@ -73,6 +74,9 @@ if [ -n "$tag_params" ]; then
   tag_name="${tag_prefix}$(cat $tag_params)"
 else
   tag_name="$tag_source"
+  if [ -n "$tag_string" ]; then
+    tag_name="${tag_prefix}${tag_string}"
+  fi
 fi
 
 additional_tag_names=""
@@ -204,7 +208,7 @@ elif [ -n "$build" ]; then
       # see https://github.com/moby/moby/pull/32677
       # and https://github.com/awslabs/amazon-ecr-credential-helper/issues/9
       docker pull "${ecr_image}"
-    done    
+    done
   fi
 
   docker build -t "${repository}:${tag_name}" "${target[@]}" "${expanded_build_args[@]}" -f "$dockerfile" $cache_from "$build"

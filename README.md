@@ -221,7 +221,9 @@ version is the image's digest.
   prepended with this string. This is useful for adding `v` in front of version
   numbers.
 
-* `target_name`: *Optional.*  Specify the name of the target build stage. 
+* `tag_string`: *Optional.*  If set, this string will be used as the tag name.
+
+* `target_name`: *Optional.*  Specify the name of the target build stage.
   Only supported for multi-stage Docker builds
 
 
