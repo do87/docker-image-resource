@@ -276,11 +276,22 @@ if [ -n "$push_as" ]    ; then
   done
 fi
 
-jq -n "{
-  version: {
-    digest: $(echo $digest | jq -R .)
-  },
-  metadata: [
-    { name: \"image\", value: $(echo $image_id | head -c 12 | jq -R .) }
-  ]
-}" >&3
+prevent_update=$(jq -r '.params.prevent_update // "false"' < $payload)
+
+if [ "$prevent_update" = "true" ]; then
+  jq -n "{
+    version: {
+      digest: $(echo $digest | jq -R .)
+    },
+    metadata: []
+  }" >&3
+else
+  jq -n "{
+    version: {
+      digest: $(echo $digest | jq -R .)
+    },
+    metadata: [
+      { name: \"image\", value: $(echo $image_id | head -c 12 | jq -R .) }
+    ]
+  }" >&3
+fi

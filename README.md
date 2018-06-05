@@ -214,6 +214,9 @@ version is the image's digest.
 * `push_as`: *Optional.*  A list of comma-separated image_name:tag_name the image
   will also be pushed as
 
+* `prevent_update`: *Optional.*  Default `false`. If true, the pushed image will
+  not be pulled from the registry afterwards
+
 * `tag`: *Optional.* The value should be a path to a file containing the name
   of the tag.
 
