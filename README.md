@@ -1,8 +1,12 @@
 # Docker Image Resource
 
-Tracks and builds [Docker](https://docker.io) images.
+This image repository is forked from [concourse/docker-image-resource](https://github.com/concourse/docker-image-resource)
 
-Note: docker registry must be [v2](https://docs.docker.com/registry/spec/api/).
+## Major changes
+
+* Optional textual tag name in the task
+* Optional extra push of the built image to a different registry address (and tag), assuming same authentication
+* Optional prevention of 'pull' after out stage
 
 ## Source Configuration
 
@@ -30,7 +34,7 @@ Note: docker registry must be [v2](https://docs.docker.com/registry/spec/api/).
 * `insecure_registries`: *Optional.* An array of CIDRs or `host:port` addresses
   to whitelist for insecure access (either `http` or unverified `https`).
   This option overrides any entries in `ca_certs` with the same address.
-  
+
 * `prevent_update`: *Optional.*  Default `false`. If true, the pushed image will
 not be pulled from the registry afterwards
 
