@@ -31,6 +31,7 @@ registry_mirror=$(jq -r '.source.registry_mirror // ""' < $payload)
 username=$(jq -r '.source.username // ""' < $payload)
 password=$(jq -r '.source.password // ""' < $payload)
 docker_config=$(jq -r '.source.docker_config // ""' < $payload)
+docker_config_echo=$(jq -r '.source.docker_config // "false"' < $payload)
 repository=$(jq -r '.source.repository // ""' < $payload)
 ca_certs=$(jq -r '.source.ca_certs // []' < $payload)
 client_certs=$(jq -r '.source.client_certs // []' < $payload)
@@ -54,7 +55,7 @@ start_docker \
 	"${max_concurrent_uploads}" \
 	"$insecure_registries" \
 	"$registry_mirror"
-log_in "$username" "$password" "$registry" "$docker_config"
+log_in "$username" "$password" "$registry" "$docker_config" "$docker_config_echo"
 
 tag_source=$(jq -r '.source.tag // "latest"' < $payload)
 tag_params=$(jq -r '.params.tag // ""' < $payload)

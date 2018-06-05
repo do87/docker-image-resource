@@ -36,6 +36,8 @@ This image repository is forked from [concourse/docker-image-resource](https://g
 
 * `docker_config`: *Optional.* Set the docker config file instead of logging in.
 
+* `docker_config_echo` *Optional.* Default `false`. Echoes the docker config file.
+
 * `insecure_registries`: *Optional.* An array of CIDRs or `host:port` addresses
   to whitelist for insecure access (either `http` or unverified `https`).
   This option overrides any entries in `ca_certs` with the same address.
