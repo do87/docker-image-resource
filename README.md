@@ -302,7 +302,7 @@ resource_types:
   privileged: true
   source:
     repository: do87/docker-image-resource
-    tag: latest
+    tag: 1.2.2
 
 resources:
 - name: some-image
