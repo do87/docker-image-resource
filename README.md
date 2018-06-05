@@ -34,6 +34,8 @@ This image repository is forked from [concourse/docker-image-resource](https://g
 * `aws_session_token`: *Optional.* AWS session token (assumed role) to use for acquiring ECR
   credentials.
 
+* `docker_config`: *Optional.* Set the docker config file instead of logging in.
+
 * `insecure_registries`: *Optional.* An array of CIDRs or `host:port` addresses
   to whitelist for insecure access (either `http` or unverified `https`).
   This option overrides any entries in `ca_certs` with the same address.
