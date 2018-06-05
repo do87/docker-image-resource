@@ -10,6 +10,8 @@ This image repository is forked from [concourse/docker-image-resource](https://g
 
 * Optional prevention of image pull after `out` (build) stage
 
+* Optional load a predefined docker config file
+
 
 ## Source Configuration
 
